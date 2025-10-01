@@ -1,0 +1,56 @@
+Questões Teóricas:
+1. Explique a importância da modelagem conceitual no processo de desenvolvimento de 
+sistemas de informação. Relacione sua resposta com a independência de dados e a 
+comunicação entre usuários e desenvolvedores.
+
+resposta: A modelagem conceitual é tipo o rascunho do sistema, a gente desenha as informações principais 
+(entidades, relacionamentos e atributos) inicialmete sem se preocupar com tabelas ou SQL.
+Ela é importante porque ajuda na comunicação, onde usuarios e os programadores no geral olham e entendem, 
+pois não é algo tão técnico.
+Garante independência de dados, pensamos primeiro nas informações e so depois passamos para tabelas.
+Evita problemas mais tarde se tiver algo errado, a gente já vê no desenho antes de virar código.
+
+
+2. Diferencie entidade forte de entidade fraca. Forneça um exemplo prático de cada uma 
+em um sistema de gestão acadêmica.
+
+resposta: Entidade forte consegue se identificar sozinha, tem um atributo que diferencia ela de qualquer outra.
+Exemplo: Aluno tem a matrícula ou CPF. Mesmo sem ninguém ligado a ele, já dá pra saber quem é.
+
+Entidade fraca: não se identifica sozinha, precisa da “força” de outra entidade.
+Exemplo: Dependente de um aluno. Só “Joana” não basta, pois pode ter várias. 
+Mas “Dependente Joana do Aluno João” já fica único.
+
+3. Defina e compare os conceitos de chave primária, chave candidata e superchave. 
+Explique por que a escolha correta da chave primária é fundamental.
+
+reposta: - Superchave é qualquer conjunto de atributos que consegue identificar um registro de forma única.
+Pode até ter coisa a mais.
+exemplo: (CPF) já identifica, mas (CPF + Nome) também identifica — mesmo que o nome seja “sobra”.
+- Chave candidata é uma superchave mínima, ou seja, só o necessário pra identificar, sem sobra.
+exemplo: (CPF) sozinho já é suficiente → vira uma chave candidata.
+- Chave primária é a chave candidata que a gente escolhe como a oficial da tabela.
+exemplo: no cadastro de cliente, você pode escolher o CPF como PK. Se quiser, pode criar outra artificial, 
+tipo um id_cliente.
+
+
+4. O que são relacionamentos ternários em um modelo entidade-relacionamento (MER)? 
+Dê um exemplo de situação em que esse tipo de relacionamento é necessário.
+
+resposta: O relacionamentos ternário liga três entidades ao mesmo tempo, porque a regra 
+de negócio depende da combinação das três juntas.
+exemplo: no hospital, um Médico atende um Paciente em uma Sala.
+Se você separar em vários relacionamentos binários (Médico–Paciente, Médico–Sala, Paciente–Sala),
+não consegue garantir que os três juntos estão no mesmo atendimento, na mesma hora.
+
+5. Descreva o papel dos atributos multivalorados e derivados em um MER. Explique como 
+representá-los e quando é recomendável normalizar sua representação.
+
+resposta: Multivalorado é quando um mesmo registro pode ter vários valores para o mesmo atributo.
+No desenho conceitual (MER) a gente mostra com uma elipse dupla, no banco (modelo lógico), 
+a gente resolve criando uma tabela separada, tipo cliente_telefone.
+-  Derivado: é um valor que pode ser calculado a partir de outro.
+exemplo: a idade não precisa ser salva, porque dá pra calcular a partir da data de nascimento.
+No MER aparece como elipse tracejada.
+No banco, a gente normalmente não salva, só calcula na hora da consulta. 
+(A não ser que seja exigência de desempenho, aí precisa garantir atualização automática.)
