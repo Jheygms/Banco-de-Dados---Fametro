@@ -1,0 +1,3 @@
+Uma Papelaria deseja informatizar suas vendas. O sistema deve manter 
+cadastro de clientes, produtos e pedidos. 
+Para simplificar, cada pedido refere-se a um único produto, informando a quantidade comprada.
